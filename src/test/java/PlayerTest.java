@@ -20,12 +20,12 @@ public class PlayerTest {
     @Test
     public void testSame(){
         int x = 6;
-        Assert.assertEquals(x, player.same(x));
+        Assert.assertEquals(x + 1, player.same(x));
     }
 
     @Test
     public void testSame2(){
         int x = 6;
-        Assert.assertEquals(6, player.same(x));
+        Assert.assertEquals(6 + 1, player.same(x));
     }
 }
