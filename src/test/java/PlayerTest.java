@@ -16,7 +16,12 @@ public class PlayerTest {
     public void teardown(){
         player = null;
     }
-    
+
+    @Test
+    public void testSame(){
+        int x = 6;
+        Assert.assertEquals(x, player.same(x));
+    }
 
     @Test
     public void testSame2(){
