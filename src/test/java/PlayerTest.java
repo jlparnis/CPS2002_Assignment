@@ -22,4 +22,11 @@ public class PlayerTest {
         int x = 6;
         Assert.assertEquals(x, player.same(x));
     }
+
+
+    @Test
+    public void testSame2(){
+        int x = 6;
+        Assert.assertEquals(8, player.same(x));
+    }
 }
