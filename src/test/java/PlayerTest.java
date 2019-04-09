@@ -26,6 +26,6 @@ public class PlayerTest {
     @Test
     public void testSame2(){
         int x = 6;
-        Assert.assertEquals(8, player.same(x));
+        Assert.assertEquals(6, player.same(x));
     }
 }
