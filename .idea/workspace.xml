@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="12edf29a-8bea-42ca-9f67-a7903a4700a0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/java/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PlayerTest.java" afterDir="false" />
+    <list default="true" id="12edf29a-8bea-42ca-9f67-a7903a4700a0" name="Default Changelist" comment="testing environment">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Factorial.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/FactorialTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/PlayerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PlayerTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,26 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor />
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Player.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -39,19 +23,55 @@
               <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
               <folding>
                 <element signature="e#65#66#0" expanded="true" />
-                <element signature="e#101#102#0" expanded="true" />
-                <element signature="e#197#198#0" expanded="true" />
-                <element signature="e#223#224#0" expanded="true" />
+                <element signature="e#115#116#0" expanded="true" />
+                <element signature="e#137#138#0" expanded="true" />
+                <element signature="e#161#162#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/FactorialTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="26" column="64" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#83#84#0" expanded="true" />
+                <element signature="e#125#126#0" expanded="true" />
+                <element signature="e#293#294#0" expanded="true" />
+                <element signature="e#317#318#0" expanded="true" />
+                <element signature="e#332#333#0" expanded="true" />
+                <element signature="e#396#397#0" expanded="true" />
+                <element signature="e#437#438#0" expanded="true" />
+                <element signature="e#508#509#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Factorial.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/PlayerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+            <state>
+              <caret selection-end-line="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#189#190#0" expanded="true" />
+                <element signature="e#226#227#0" expanded="true" />
+                <element signature="e#266#267#0" expanded="true" />
+                <element signature="e#295#296#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,6 +94,8 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Player.java" />
         <option value="$PROJECT_DIR$/src/test/java/PlayerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Factorial.java" />
+        <option value="$PROJECT_DIR$/src/test/java/FactorialTest.java" />
       </list>
     </option>
   </component>
@@ -87,7 +109,7 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="20" />
-    <option name="width" value="1348" />
+    <option name="width" value="1349" />
     <option name="height" value="700" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -103,35 +125,35 @@
           <expand>
             <path>
               <item name="artifactID" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cps2002" type="462c0819:PsiDirectoryNode" />
+              <item name="CPS2002_Assignment" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="artifactID" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cps2002" type="462c0819:PsiDirectoryNode" />
+              <item name="CPS2002_Assignment" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="artifactID" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cps2002" type="462c0819:PsiDirectoryNode" />
+              <item name="CPS2002_Assignment" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="artifactID" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cps2002" type="462c0819:PsiDirectoryNode" />
+              <item name="CPS2002_Assignment" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="artifactID" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cps2002" type="462c0819:PsiDirectoryNode" />
+              <item name="CPS2002_Assignment" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="artifactID" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cps2002" type="462c0819:PsiDirectoryNode" />
+              <item name="CPS2002_Assignment" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -145,10 +167,11 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554811641740" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555467052592" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -162,10 +185,19 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PlayerTest">
+  <component name="RunManager" selected="JUnit.FactorialTest">
     <configuration name="Player" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Player" />
       <module name="CPS2002" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FactorialTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CPS2002" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FactorialTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -191,9 +223,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FactorialTest" />
+        <item itemvalue="Application.Player" />
         <item itemvalue="JUnit.PlayerTest" />
         <item itemvalue="JUnit.PlayerTest.testSame2" />
-        <item itemvalue="Application.Player" />
       </list>
     </recent_temporary>
   </component>
@@ -208,6 +241,7 @@
       <option name="presentableId" value="Default" />
       <updated>1554810339461</updated>
       <workItem from="1554810344509" duration="1296000" />
+      <workItem from="1555465014650" duration="2089000" />
     </task>
     <servers />
   </component>
@@ -227,15 +261,20 @@
     <history-entry file="PlayerTest - 2019.04.09 at 14h 01m 37s.xml">
       <configuration name="PlayerTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PlayerTest - 2019.04.17 at 03h 39m 59s.xml">
+      <configuration name="PlayerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FactorialTest - 2019.04.17 at 04h 10m 08s.xml">
+      <configuration name="FactorialTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1296000" />
+    <option name="totallyTimeSpent" value="3385000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49140048" visible="true" weight="0.26845637" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49140048" visible="true" weight="0.27248323" />
       <window_info id="Structure" order="1" sideWeight="0.5085995" side_tool="true" weight="0.26907074" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -244,7 +283,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.30736545" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.30736545" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.256447" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -254,7 +293,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50067115" side_tool="true" weight="0.49433428" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.3243626" />
+      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.3243626" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -270,7 +309,23 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="testing environment" />
+    <option name="LAST_COMMIT_MESSAGE" value="testing environment" />
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CPS2002.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/artifactID.iml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Calc.java" />
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -279,23 +334,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CPS2002.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/artifactID.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Calc.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Factorial.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" column="13" lean-forward="true" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -305,17 +347,42 @@
           <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
           <folding>
             <element signature="e#65#66#0" expanded="true" />
-            <element signature="e#101#102#0" expanded="true" />
-            <element signature="e#197#198#0" expanded="true" />
-            <element signature="e#223#224#0" expanded="true" />
+            <element signature="e#115#116#0" expanded="true" />
+            <element signature="e#137#138#0" expanded="true" />
+            <element signature="e#161#162#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/PlayerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+        <state>
+          <caret selection-end-line="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#189#190#0" expanded="true" />
+            <element signature="e#226#227#0" expanded="true" />
+            <element signature="e#266#267#0" expanded="true" />
+            <element signature="e#295#296#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/FactorialTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="26" column="64" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#83#84#0" expanded="true" />
+            <element signature="e#125#126#0" expanded="true" />
+            <element signature="e#293#294#0" expanded="true" />
+            <element signature="e#317#318#0" expanded="true" />
+            <element signature="e#332#333#0" expanded="true" />
+            <element signature="e#396#397#0" expanded="true" />
+            <element signature="e#437#438#0" expanded="true" />
+            <element signature="e#508#509#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
