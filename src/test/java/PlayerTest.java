@@ -28,4 +28,10 @@ public class PlayerTest {
         int x = 6;
         Assert.assertEquals(6, player.same(x));
     }
+
+    @Test
+    public void testSame3(){
+        int x = 7;
+        Assert.assertEquals(6, player.same(x));
+    }
 }
