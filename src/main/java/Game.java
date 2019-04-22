@@ -48,15 +48,46 @@ public class Game {
                 players[i] = new Player(pos);
 
                 boolean[][] visited = new boolean[mapSize][mapSize];
+                visited[pos.x][pos.y] = true;
                 playersVisited.add(visited);
+
             }
 
             System.out.println(map);
 
-            while(true) {
+            boolean winners = false;
+            while(!winners) {
+                // Create all HTML files
+                generateHTMLFiles();
+
+                // Get new positions
                 askAllPlayers();
 
-                checkPlayerPositions();
+
+                for(int i = 0; i < playerNo; i++) {
+                    // Set new position as visited
+                    Position pos = players[i].getPosition();
+                    playersVisited.get(i)[pos.x][pos.y] = true;
+
+                    // Check if there are any players in water or any winners
+                    Map.Tile tile = checkPlayerPositions(i);
+                    if(tile == Map.Tile.WATER) {
+                        // Change position to starting position
+                        players[i].resetStartingPos();
+                    } else if (tile == Map.Tile.TREASURE) {
+                        // Treasure found
+                        winners = true;
+                        break;
+                    }
+                }
+            }
+
+            // Winners
+            for(int i = 0; i < playerNo; i++) {
+                Map.Tile tile = checkPlayerPositions(i);
+                if (tile == Map.Tile.TREASURE) {
+                    System.out.println("Player " + (i + 1) + " won!");
+                }
             }
         }
     }
@@ -68,9 +99,10 @@ public class Game {
             System.out.print("Player " + (i + 1) +  " ");
             Player.Move move = askMove();
 
+            Position currPos = players[i].getPosition();
             switch (move) {
                 case UP:
-                    if(players[i].getPosition().y + 1 < mapSize) {
+                    if(currPos.y + 1 < mapSize) {
                         players[i].move(Player.Move.UP);
                     } else {
                         // Invalid move
@@ -79,7 +111,7 @@ public class Game {
 
                     break;
                 case DOWN:
-                    if(players[i].getPosition().y - 1 >= 0) {
+                    if(currPos.y - 1 >= 0) {
                         players[i].move(Player.Move.DOWN);
                     } else {
                         // Invalid move
@@ -88,7 +120,7 @@ public class Game {
 
                     break;
                 case LEFT:
-                    if(players[i].getPosition().x - 1 >= 0) {
+                    if(currPos.x - 1 >= 0) {
                         players[i].move(Player.Move.LEFT);
                     } else {
                         // Invalid move
@@ -97,7 +129,7 @@ public class Game {
 
                     break;
                 case RIGHT:
-                    if(players[i].getPosition().x + 1 < mapSize) {
+                    if(currPos.x + 1 < mapSize) {
                         players[i].move(Player.Move.RIGHT);
                     } else {
                         // Invalid move
@@ -130,7 +162,7 @@ public class Game {
                 return Player.Move.RIGHT;
             }
 
-            System.out.println("Enter a valid movement");
+            System.err.println("Enter a valid movement");
         }
     }
 
@@ -151,7 +183,7 @@ public class Game {
                 sc.next();
             }
 
-            System.out.println("Enter number between [x and y]");
+            System.err.println("Error: Enter number of players between 2 and 8");
         }
     }
 
@@ -185,15 +217,32 @@ public class Game {
 
     }
 
-    private void checkPlayerPositions() {
-        for(int i = 0; i < playerNo; i++) {
-            System.out.println("Player " + i + 1 + ": " + players[i].getPosition() + ":"+
-            map.getTileType(players[i].getPosition()).toString());
-        }
+    private Map.Tile checkPlayerPositions(int player) {
+        System.out.println("Player 1: " + players[player].getPosition().x + ", " + players[player].getPosition().y);
+        return map.getTileType(players[player].getPosition());
     }
 
     public void generateHTMLFiles(){
-        
+        for(int player = 0; player < playerNo; player++) {
+            System.out.println("Player 1 position: " + players[player].getPosition().x + ", " + players[player].getPosition().y);
+
+
+            for(int j = mapSize - 1; j >= 0; j--) {
+                for(int i = 0; i < mapSize; i++) {
+                    if(playersVisited.get(player)[i][j]) {
+                        System.out.print(i + "," + j + " " + map.getTileType(i, j));
+                        if(players[player].getPosition().x == i && players[player].getPosition().y == j) {
+                            System.out.print("(X)\t");
+                        } else {
+                            System.out.print("   \t");
+                        }
+                    } else {
+                        System.out.print("............\t");
+                    }
+                }
+                System.out.println();
+            }
+        }
     }
 }
 

@@ -9,7 +9,7 @@ public class PlayerTest {
 
     @Before
     public void setup() {
-        player = new Player();
+        player = new Player(new Position(1,1));
     }
 
     @After

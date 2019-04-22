@@ -21,6 +21,10 @@ public class Position {
         this.y = y;
     }
 
+    public Position clone() {
+        return new Position(x, y);
+    }
+
     @Override
     public String toString() {
         return ("(" + x + ", " + y + ")");

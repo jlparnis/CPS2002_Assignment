@@ -1,15 +1,19 @@
 public class Player {
     private Position position;
+    private Position firstPosition;
 
     public enum Move {
         UP, DOWN, LEFT, RIGHT
     }
 
-    public Player(){
-    }
-
     public Player(Position position){
         this.position = position;
+        this.firstPosition = position.clone();
+    }
+
+    public void resetStartingPos() {
+        position.x = firstPosition.x;
+        position.y = firstPosition.y;
     }
 
     public void setPosition(Position position) {
