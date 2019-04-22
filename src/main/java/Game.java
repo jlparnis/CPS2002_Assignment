@@ -18,59 +18,65 @@ public class Game {
         sc = new Scanner(System.in);
 
         while(true) {
-            // players: [2, 8]
-            // size:
-
-
             // Get number of players
-            while(true) {
-                System.out.println("Players: ");
-                if(sc.hasNextInt()) {
-                    playerNo = sc.nextInt();
+            playerNo = askPlayerNumber();
 
-                    if(playerNo >= 2 && playerNo <= 8) {
-                        break;
-                    }
-                } else {
-                    // Not an integer
-                    sc.next();
-                }
-
-                System.out.println("Enter number between [x and y]");
-            }
-
-
-            // Get number of players
-            while(true) {
-                System.out.println("Size of map [N x N]: ");
-                if(sc.hasNextInt()) {
-                    mapSize = sc.nextInt();
-
-                    if(playerNo <=4) {
-                        // playerNo = [2, 4]
-                        if(mapSize >= 5 && mapSize <= 50) {
-                            break;
-                        }
-                    } else {
-                        // playerNo = [5,8]
-                        if(mapSize >= 8 && mapSize <= 50) {
-                            break;
-                        }
-                    }
-
-                } else {
-
-                    // Not an integer
-                    sc.next();
-                }
-
-                System.out.println("Enter a valid map number");
-            }
+            // Get size of map
+            mapSize = askMapSize();
 
             System.out.println(playerNo);
         }
     }
 
+    private int askPlayerNumber() {
+        int play = -1;
+
+        while(true) {
+            System.out.println("Players: ");
+            if(sc.hasNextInt()) {
+                play = sc.nextInt();
+
+                if(play >= 2 && play <= 8) {
+                    return play;
+                }
+            } else {
+                // Not an integer
+                sc.next();
+            }
+
+            System.out.println("Enter number between [x and y]");
+        }
+    }
+
+    private int askMapSize() {
+        int size;
+        while(true) {
+            System.out.println("Size of map [N x N]: ");
+            if(sc.hasNextInt()) {
+                size = sc.nextInt();
+
+                if(playerNo <=4) {
+                    // playerNo = [2, 4]
+                    if(size >= 5 && size <= 50) {
+                        return size;
+                    }
+                } else {
+                    // playerNo = [5,8]
+                    if(size >= 8 && size <= 50) {
+                        return size;
+                    }
+                }
+
+            } else {
+
+                // Not an integer
+                sc.next();
+            }
+
+            System.out.println("Enter a valid map number");
+        }
+
+    }
     public boolean setNumPlayers(int n){
         return true;
     }
