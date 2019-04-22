@@ -26,19 +26,26 @@ public class Map {
     }
 
     private Tile getRandomTile() {
-        // 40% Grass
-        // 60% Water
-        if(Math.random() < 0.4) {
-            return Tile.GRASS;
-        } else {
+        // 30% Water
+        // 70% Grass
+        if(Math.random() < 0.3) {
             return Tile.WATER;
+        } else {
+            return Tile.GRASS;
         }
     }
 
     public void generateMap() {
+        boolean valid = false;
+
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 map[i][j] = getRandomTile();
+
+                // Make sure that there is at least one Grass tile
+                if(map[i][j] == Tile.GRASS) {
+                    valid = true;
+                }
             }
         }
 
@@ -48,10 +55,19 @@ public class Map {
         int y = random.nextInt(size);
 
         map[x][y] = Tile.TREASURE;
+
+        if(!valid) {
+            // No grass tiles preset, .: regenerate the map
+            generateMap();
+        }
     }
 
-    public char getTileType(int x, int y){
-        return ' ';
+    public Tile getTileType(int x, int y){
+        return map[x][y];
+    }
+
+    public Tile getTileType(Position pos){
+        return map[pos.x][pos.y];
     }
 
     @Override

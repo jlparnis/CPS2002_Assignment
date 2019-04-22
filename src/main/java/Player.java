@@ -1,8 +1,11 @@
 public class Player {
     private Position position;
 
-    public Player(){
+    enum Move {
+        UP, DOWN, LEFT, RIGHT
+    }
 
+    public Player(){
     }
 
     public Player(Position position){
@@ -17,18 +20,18 @@ public class Player {
         return position;
     }
 
-    public void move(char move){
-        switch (move){
-            case 'U':
+    public void move(Move m){
+        switch (m){
+            case UP:
                 position.y = position.y + 1;
                 break;
-            case 'D':
+            case DOWN:
                 position.y = position.y - 1;
                 break;
-            case 'L':
+            case LEFT:
                 position.x = position.x - 1;
                 break;
-            case 'R':
+            case RIGHT:
                 position.x = position.x + 1;
                 break;
             default:

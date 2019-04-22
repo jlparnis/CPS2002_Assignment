@@ -1,13 +1,20 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
     private int turns;
     private Player[] players;
+    private List<boolean[][]> playersVisited;
     private Map map;
     private Scanner sc;
     private int playerNo;
     private int mapSize;
+
+    Game() {
+        playersVisited = new ArrayList<boolean[][]>();
+    }
 
     public static void main(String[] args){
         Game game = new Game();
@@ -24,13 +31,27 @@ public class Game {
             // Get size of map
             mapSize = askMapSize();
 
-
+            // Generate map
             map = new Map(mapSize);
-
             map.generateMap();
 
-            System.out.println(map);
+            // Create new players
+            players = new Player[playerNo];
+            for(int i = 0; i < players.length; i++) {
 
+                // Get a position that is a grass tile
+                Position pos = Position.RandomPosition(mapSize);
+                while(map.getTileType(pos) != Map.Tile.GRASS) {
+                    pos = Position.RandomPosition(mapSize);
+                }
+
+                players[i] = new Player();
+
+                boolean[][] visited = new boolean[mapSize][mapSize];
+                playersVisited.add(visited);
+            }
+
+            System.out.println(map);
         }
     }
 
