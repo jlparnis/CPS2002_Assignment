@@ -24,7 +24,13 @@ public class Game {
             // Get size of map
             mapSize = askMapSize();
 
-            System.out.println(playerNo);
+
+            map = new Map(mapSize);
+
+            map.generateMap();
+
+            System.out.println(map);
+
         }
     }
 

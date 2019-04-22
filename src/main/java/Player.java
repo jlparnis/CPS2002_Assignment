@@ -20,16 +20,16 @@ public class Player {
     public void move(char move){
         switch (move){
             case 'U':
-                position.setY(position.getY()+1);
+                position.y = position.y + 1;
                 break;
             case 'D':
-                position.setY(position.getY()-1);
+                position.y = position.y - 1;
                 break;
             case 'L':
-                position.setX(position.getX()-1);
+                position.x = position.x - 1;
                 break;
             case 'R':
-                position.setX(position.getX()+1);
+                position.x = position.x + 1;
                 break;
             default:
                 throw new IllegalArgumentException("!Invalid Move!");

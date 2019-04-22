@@ -20,21 +20,21 @@ public class PositionTest {
     @Test
     public void test_x(){
         int x = 1;
-        position.setX(x);
-        Assert.assertEquals(x, position.getX());
+        position.x = x;
+        Assert.assertEquals(x, position.x);
     }
 
     @Test
     public void test_y(){
         int y = 2;
-        position.setY(y);
-        Assert.assertEquals(y, position.getY());
+        position.y = y;
+        Assert.assertEquals(y, position.y);
     }
 
     @Test
     public void test_toString(){
-        position.setX(1);
-        position.setY(2);
+        position.x = 1;
+        position.y = 2;
         Assert.assertEquals("(1, 2)", position.toString());
     }
 }
