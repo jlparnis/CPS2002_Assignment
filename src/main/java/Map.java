@@ -25,6 +25,10 @@ public class Map {
         return true;
     }
 
+    public int getMapSize(){
+        return size;
+    }
+
     private Tile getRandomTile() {
         // 30% Water
         // 70% Grass
