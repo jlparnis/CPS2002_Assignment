@@ -1,7 +1,7 @@
 public class Player {
     private Position position;
 
-    enum Move {
+    public enum Move {
         UP, DOWN, LEFT, RIGHT
     }
 

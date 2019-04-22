@@ -13,7 +13,6 @@ public class Game {
     private int mapSize;
 
     Game() {
-        playersVisited = new ArrayList<boolean[][]>();
     }
 
     public static void main(String[] args){
@@ -37,6 +36,7 @@ public class Game {
 
             // Create new players
             players = new Player[playerNo];
+            playersVisited = new ArrayList<boolean[][]>();
             for(int i = 0; i < players.length; i++) {
 
                 // Get a position that is a grass tile
@@ -45,15 +45,95 @@ public class Game {
                     pos = Position.RandomPosition(mapSize);
                 }
 
-                players[i] = new Player();
+                players[i] = new Player(pos);
 
                 boolean[][] visited = new boolean[mapSize][mapSize];
                 playersVisited.add(visited);
             }
 
             System.out.println(map);
+
+            while(true) {
+                askAllPlayers();
+
+                checkPlayerPositions();
+            }
         }
     }
+
+
+    private void askAllPlayers() {
+        System.out.println("Enter direction: [U]p, [D]own, [R]ight, [L]eft");
+        for(int i = 0; i < playerNo; i++) {
+            System.out.print("Player " + (i + 1) +  " ");
+            Player.Move move = askMove();
+
+            switch (move) {
+                case UP:
+                    if(players[i].getPosition().y + 1 < mapSize) {
+                        players[i].move(Player.Move.UP);
+                    } else {
+                        // Invalid move
+                        System.out.println("Moving out of map");
+                    }
+
+                    break;
+                case DOWN:
+                    if(players[i].getPosition().y - 1 >= 0) {
+                        players[i].move(Player.Move.DOWN);
+                    } else {
+                        // Invalid move
+                        System.out.println("Moving out of map");
+                    }
+
+                    break;
+                case LEFT:
+                    if(players[i].getPosition().x - 1 >= 0) {
+                        players[i].move(Player.Move.LEFT);
+                    } else {
+                        // Invalid move
+                        System.out.println("Moving out of map");
+                    }
+
+                    break;
+                case RIGHT:
+                    if(players[i].getPosition().x + 1 < mapSize) {
+                        players[i].move(Player.Move.RIGHT);
+                    } else {
+                        // Invalid move
+                        System.out.println("Moving out of map");
+                    }
+
+                    break;
+                default:
+                    throw new RuntimeException("Unknown direction");
+            }
+
+        }
+    }
+
+    private Player.Move askMove() {
+        while(true) {
+            System.out.println("direction:");
+            String movement = sc.next();
+
+            char move = movement.charAt(0);
+            move = Character.toLowerCase(move);
+
+            if(move == 'u') {
+                return Player.Move.UP;
+            } else if(move == 'd') {
+                return Player.Move.DOWN;
+            } else if(move == 'l') {
+                return Player.Move.LEFT;
+            } else if(move == 'r') {
+                return Player.Move.RIGHT;
+            }
+
+            System.out.println("Enter a valid movement");
+        }
+    }
+
 
     private int askPlayerNumber() {
         int play = -1;
@@ -104,8 +184,12 @@ public class Game {
         }
 
     }
-    public boolean setNumPlayers(int n){
-        return true;
+
+    private void checkPlayerPositions() {
+        for(int i = 0; i < playerNo; i++) {
+            System.out.println("Player " + i + 1 + ": " + players[i].getPosition() + ":"+
+            map.getTileType(players[i].getPosition()).toString());
+        }
     }
 
     public void generateHTMLFiles(){

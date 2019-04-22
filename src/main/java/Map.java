@@ -74,9 +74,9 @@ public class Map {
     public String toString() {
         StringBuilder m = new StringBuilder();
 
-        for(int i = 0; i < size; i++) {
-            for(int j = 0; j < size; j++) {
-                m.append(map[i][j] + "   \t");
+        for(int j = size - 1; j >= 0; j--) {
+            for(int i = 0; i < size; i++) {
+                m.append(i + "," + j + " " + map[i][j] + "   \t");
             }
             m.append("\n");
         }
