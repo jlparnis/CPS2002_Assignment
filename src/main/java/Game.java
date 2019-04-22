@@ -63,7 +63,6 @@ public class Game {
                 // Get new positions
                 askAllPlayers();
 
-
                 for(int i = 0; i < playerNo; i++) {
                     // Set new position as visited
                     Position pos = players[i].getPosition();
@@ -88,6 +87,10 @@ public class Game {
                 if (tile == Map.Tile.TREASURE) {
                     System.out.println("Player " + (i + 1) + " won!");
                 }
+            }
+
+            if(!playAgain()) {
+                break;
             }
         }
     }
@@ -218,13 +221,29 @@ public class Game {
     }
 
     private Map.Tile checkPlayerPositions(int player) {
-        System.out.println("Player 1: " + players[player].getPosition().x + ", " + players[player].getPosition().y);
+//        System.out.println("Player 1: " + players[player].getPosition().x + ", " + players[player].getPosition().y);
         return map.getTileType(players[player].getPosition());
+    }
+
+    private boolean playAgain() {
+        while(true) {
+            System.out.println("Do you want to restart the game? [Y]es/[N]o");
+
+            String ans = sc.next();
+
+            if(Character.toLowerCase(ans.charAt(0)) == 'y') {
+                return true;
+            } else if(Character.toLowerCase(ans.charAt(0)) == 'n') {
+                return false;
+            }
+
+            System.err.println("Error: Enter a valid answer");
+        }
     }
 
     public void generateHTMLFiles(){
         for(int player = 0; player < playerNo; player++) {
-            System.out.println("Player 1 position: " + players[player].getPosition().x + ", " + players[player].getPosition().y);
+            System.out.println("Player " + player + " position: " + players[player].getPosition().x + ", " + players[player].getPosition().y);
 
 
             for(int j = mapSize - 1; j >= 0; j--) {
