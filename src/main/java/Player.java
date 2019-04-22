@@ -39,11 +39,7 @@ public class Player {
                 position.x = position.x + 1;
                 break;
             default:
-                throw new IllegalArgumentException("!Invalid Move!");
+                throw new IllegalArgumentException("Invalid Move!");
         }
-    }
-
-    public int same(int n) {
-        return n;
     }
 }

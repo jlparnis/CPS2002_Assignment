@@ -37,4 +37,18 @@ public class PositionTest {
         position.y = 2;
         Assert.assertEquals("(1, 2)", position.toString());
     }
+
+    @Test
+    public void test_random_pos() {
+        int size = 5;
+
+        for(int i = 0; i< 50; i++) {
+            position = Position.RandomPosition(size);
+            Assert.assertTrue(position.x < size && position.x >= 0);
+            Assert.assertTrue(position.y < size && position.y >= 0);
+        }
+
+
+
+    }
 }

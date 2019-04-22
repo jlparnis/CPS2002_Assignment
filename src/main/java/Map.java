@@ -22,6 +22,7 @@ public class Map {
 
     public boolean setMapSize(int n){
         size = n;
+        map = new Tile[size][size];
         return true;
     }
 
