@@ -19,19 +19,19 @@ public class PlayerTest {
 
     @Test
     public void testSame(){
-        int x = 6;
+        int x = 4;
         Assert.assertEquals(x, player.same(x));
     }
 
     @Test
     public void testSame2(){
         int x = 6;
-        Assert.assertEquals(6, player.same(x));
+        Assert.assertEquals(1, player.same(x));
     }
 
     @Test
     public void testSame3(){
         int x = 7;
-        Assert.assertEquals(7, player.same(x));
+        Assert.assertEquals(2, player.same(x));
     }
 }

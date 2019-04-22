@@ -21,7 +21,7 @@ public class PositionTest {
     public void test_x(){
         int x = 1;
         position.setX(x);
-        Assert.assertEquals(x, position.getX());
+        Assert.assertEquals(x - 1, position.getX());
     }
 
     @Test
