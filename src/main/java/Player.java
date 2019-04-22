@@ -35,4 +35,8 @@ public class Player {
                 throw new IllegalArgumentException("!Invalid Move!");
         }
     }
+
+    public int same(int n) {
+        return n;
+    }
 }

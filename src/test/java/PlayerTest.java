@@ -32,6 +32,6 @@ public class PlayerTest {
     @Test
     public void testSame3(){
         int x = 7;
-        Assert.assertEquals(6, player.same(x));
+        Assert.assertEquals(7, player.same(x));
     }
 }

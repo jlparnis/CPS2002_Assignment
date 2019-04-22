@@ -10,7 +10,7 @@ public class Map {
     }
 
     public Boolean setMap(int x, int y){
-
+        return true;
     }
 
     public void generatMap(){
@@ -18,7 +18,7 @@ public class Map {
     }
 
     public char getTileTyoe(int x, int y){
-        
+        return ' ';
     }
 
 

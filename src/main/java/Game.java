@@ -12,7 +12,7 @@ public class Game {
     }
 
     public boolean setNumPlayers(int n){
-
+        return true;
     }
 
     public void generateHTMLFiles(){
