@@ -1,8 +1,9 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class Game {
     private int turns;
@@ -54,7 +55,8 @@ public class Game {
 
             }
 
-            System.out.println(map);
+            // Print map
+            // System.out.println(map);
 
             boolean winners = false;
             while(!winners) {
@@ -85,6 +87,7 @@ public class Game {
             // Winners
             for(int i = 0; i < playerNo; i++) {
                 Map.Tile tile = checkPlayerPositions(i);
+                generateHTMLFiles();
                 if (tile == Map.Tile.TREASURE) {
                     System.out.println("Player " + (i + 1) + " won!");
                 }
@@ -243,45 +246,81 @@ public class Game {
     }
 
     public void generateHTMLFiles(){
-//        for(int player = 0; player < playerNo; player++) {
-//            System.out.println("Player " + player + " position: " + players[player].getPosition().x + ", " + players[player].getPosition().y);
-//
-//
-//            for(int j = mapSize - 1; j >= 0; j--) {
-//                for(int i = 0; i < mapSize; i++) {
-//                    if(playersVisited.get(player)[i][j]) {
-//                        System.out.print(i + "," + j + " " + map.getTileType(i, j));
-//                        if(players[player].getPosition().x == i && players[player].getPosition().y == j) {
-//                            System.out.print("(X)\t");
-//                        } else {
-//                            System.out.print("   \t");
-//                        }
-//                    } else {
-//                        System.out.print("............\t");
-//                    }
-//                }
-//                System.out.println();
-//            }
-//        }
-    }
+        StringBuilder header = new StringBuilder();
 
-    public void generateHTMLFiles(Map map, int player) throws IOException {
-        int mapSize = map.getSize();
-        String[][] table = new String[mapSize][mapSize+1];
-        File htmlTemplateFile = new File("src/main/html/template.html");
-        String htmlString = FileUtils.readFileToString(htmlTemplateFile, "UTF-8");
-        String title = "Player "+player;
-        for(int i = 0; i<mapSize; i++){
-            table[i][0] = "\n\t<tr>";
-            for(int j = 1; j<mapSize+1; j++){
-                table[i][j] = "\n\t<td bgcolor=\"#808080\"> </td";
+        // Common html header details
+        header.append("<!DOCTYPE html>\n" +
+                "<html>\n" +
+                "<head>\n" +
+                "<title>Page Title</title>\n" +
+                "<style>\n" +
+                "table, th, td {\n" +
+                "    border: 1px solid black;  \n" +
+                "} \n" +
+                "table {    \n" +
+                "    table-layout: fixed;\n" +
+                "    width: 200px;\n" +
+                "    height: 200px;\n" +
+                "    border: 1px solid black;\n" +
+                "\n" +
+                "}\n" +
+                "\n" +
+                ".GRASS {\n" +
+                "    background-color: green;\n" +
+                "}\n" +
+                ".WATER {\n" +
+                "    background-color: blue;\n" +
+                "}\n" +
+                ".TREASURE {\n" +
+                "    background-color: yellow;\n" +
+                "}\n" +
+                "\n" +
+                "</style>\n" +
+                "</head>\n" +
+                "<body>\n");
+
+        for(int player = 0; player < playerNo; player++) {
+            StringBuilder html = new StringBuilder();
+            // Header
+            html.append(header);
+
+            html.append("<h1>Player " + (player + 1) + "</h1>");// + " position: " + players[player].getPosition().x + ", " + players[player].getPosition().y);
+
+            html.append("<table>\n");
+
+            for(int j = mapSize - 1; j >= 0; j--) {
+                html.append("<tr>\n");
+                for(int i = 0; i < mapSize; i++) {
+                    if(playersVisited.get(player)[i][j]) {
+//                        System.out.print(i + "," + j + " " + map.getTileType(i, j));
+                        html.append("\t<td class=\"" + map.getTileType(i, j) + "\">");
+                        if(players[player].getPosition().x == i && players[player].getPosition().y == j) {
+                            html.append("(X)</td>\n");
+                        } else {
+                            html.append("</td>\n");
+                        }
+                    } else {
+                        html.append("\t<td></td>\n");
+                    }
+                }
+                html.append("\n</tr>\n");
+            }
+
+            html.append("\n</table>" +
+                    "\n</body>");
+
+
+            try (FileWriter writer = new FileWriter("player_map_" + (player + 1) + ".html");
+                 BufferedWriter bw = new BufferedWriter(writer)) {
+
+                bw.write(html.toString());
+
+            } catch (IOException e) {
+                System.err.format("IOException: %s%n", e);
             }
         }
-        htmlString = htmlString.replace("$title", title);
-        htmlString = htmlString.replace("$body", table);
-        File newHtmlFile = new File("path/new.html");
-        FileUtils.writeStringToFile(newHtmlFile, htmlString, "UTF-8");
-    }
 
+
+    }
 }
 
