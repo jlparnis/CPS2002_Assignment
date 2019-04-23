@@ -310,8 +310,9 @@ public class Game {
                     "\n</body>");
 
 
-            try (FileWriter writer = new FileWriter("player_map_" + (player + 1) + ".html");
-                 BufferedWriter bw = new BufferedWriter(writer)) {
+            try  {
+                FileWriter writer = new FileWriter("player_map_" + (player + 1) + ".html");
+                BufferedWriter bw = new BufferedWriter(writer);
 
                 bw.write(html.toString());
 
