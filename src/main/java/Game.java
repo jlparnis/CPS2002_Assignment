@@ -259,8 +259,8 @@ public class Game {
                 "} \n" +
                 "table {    \n" +
                 "    table-layout: fixed;\n" +
-                "    width: 200px;\n" +
-                "    height: 200px;\n" +
+                "    width: "+mapSize*100+"px;\n" +
+                "    height: "+mapSize*100+"px;\n" +
                 "    border: 1px solid black;\n" +
                 "\n" +
                 "}\n" +
@@ -293,9 +293,9 @@ public class Game {
                 for(int i = 0; i < mapSize; i++) {
                     if(playersVisited.get(player)[i][j]) {
 //                        System.out.print(i + "," + j + " " + map.getTileType(i, j));
-                        html.append("\t<td class=\"" + map.getTileType(i, j) + "\">");
+                        html.append("\t<td class=\"" + map.getTileType(i, j) + "\" align=\"center\">");
                         if(players[player].getPosition().x == i && players[player].getPosition().y == j) {
-                            html.append("(X)</td>\n");
+                            html.append("&#128126;</td>\n");
                         } else {
                             html.append("</td>\n");
                         }
