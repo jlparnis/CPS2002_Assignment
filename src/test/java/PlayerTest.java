@@ -83,14 +83,6 @@ public class PlayerTest {
     }
 
     @Test
-    public void test_set_pos() {
-        Position pos = new Position(3,4);
-
-        player.setPosition(pos);
-        Assert.assertEquals(pos, player.getPosition());
-    }
-
-    @Test
     public void test_set_reset_pos() {
         int x = 4, y = 5;
         Position pos = new Position(x, y);
@@ -102,5 +94,13 @@ public class PlayerTest {
 
         Assert.assertEquals(x, player.getPosition().x);
         Assert.assertEquals(y, player.getPosition().y);
+    }
+
+    @Test
+    public void test_set_pos() {
+        Position pos = new Position(4, 5);
+
+        player.setPosition(pos);
+        Assert.assertEquals(pos, player.getPosition());
     }
 }
