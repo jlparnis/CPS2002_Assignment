@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -242,26 +243,45 @@ public class Game {
     }
 
     public void generateHTMLFiles(){
-        for(int player = 0; player < playerNo; player++) {
-            System.out.println("Player " + player + " position: " + players[player].getPosition().x + ", " + players[player].getPosition().y);
+//        for(int player = 0; player < playerNo; player++) {
+//            System.out.println("Player " + player + " position: " + players[player].getPosition().x + ", " + players[player].getPosition().y);
+//
+//
+//            for(int j = mapSize - 1; j >= 0; j--) {
+//                for(int i = 0; i < mapSize; i++) {
+//                    if(playersVisited.get(player)[i][j]) {
+//                        System.out.print(i + "," + j + " " + map.getTileType(i, j));
+//                        if(players[player].getPosition().x == i && players[player].getPosition().y == j) {
+//                            System.out.print("(X)\t");
+//                        } else {
+//                            System.out.print("   \t");
+//                        }
+//                    } else {
+//                        System.out.print("............\t");
+//                    }
+//                }
+//                System.out.println();
+//            }
+//        }
+    }
 
-
-            for(int j = mapSize - 1; j >= 0; j--) {
-                for(int i = 0; i < mapSize; i++) {
-                    if(playersVisited.get(player)[i][j]) {
-                        System.out.print(i + "," + j + " " + map.getTileType(i, j));
-                        if(players[player].getPosition().x == i && players[player].getPosition().y == j) {
-                            System.out.print("(X)\t");
-                        } else {
-                            System.out.print("   \t");
-                        }
-                    } else {
-                        System.out.print("............\t");
-                    }
-                }
-                System.out.println();
+    public void generateHTMLFiles(Map map, int player) throws IOException {
+        int mapSize = map.getSize();
+        String[][] table = new String[mapSize][mapSize+1];
+        File htmlTemplateFile = new File("src/main/html/template.html");
+        String htmlString = FileUtils.readFileToString(htmlTemplateFile, "UTF-8");
+        String title = "Player "+player;
+        for(int i = 0; i<mapSize; i++){
+            table[i][0] = "\n\t<tr>";
+            for(int j = 1; j<mapSize+1; j++){
+                table[i][j] = "\n\t<td bgcolor=\"#808080\"> </td";
             }
         }
+        htmlString = htmlString.replace("$title", title);
+        htmlString = htmlString.replace("$body", table);
+        File newHtmlFile = new File("path/new.html");
+        FileUtils.writeStringToFile(newHtmlFile, htmlString, "UTF-8");
     }
+
 }
 
