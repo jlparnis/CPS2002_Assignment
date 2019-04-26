@@ -10,9 +10,8 @@
         <module name="CPS2002" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="artifactID" target="1.5" />
-      <module name="CPS2002" target="1.5" />
+    <bytecodeTargetLevel target="8">
+      <module name="CPS2002" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
