@@ -288,13 +288,13 @@ public class Game {
 
             html.append("<table>\n");
 
-            for(int j = mapSize - 1; j >= 0; j--) {
+            for (int j = mapSize - 1; j >= 0; j--) {
                 html.append("<tr>\n");
-                for(int i = 0; i < mapSize; i++) {
-                    if(playersVisited.get(player)[i][j]) {
+                for (int i = 0; i < mapSize; i++) {
+                    if (playersVisited.get(player)[i][j]) {
 //                        System.out.print(i + "," + j + " " + map.getTileType(i, j));
                         html.append("\t<td class=\"" + map.getTileType(i, j) + "\" align=\"center\">");
-                        if(players[player].getPosition().x == i && players[player].getPosition().y == j) {
+                        if (players[player].getPosition().x == i && players[player].getPosition().y == j) {
                             html.append("&#128126;</td>\n");
                         } else {
                             html.append("</td>\n");
@@ -309,19 +309,16 @@ public class Game {
             html.append("\n</table>" +
                     "\n</body>");
 
-
-            try  {
-                FileWriter writer = new FileWriter("player_map_" + (player + 1) + ".html");
-                BufferedWriter bw = new BufferedWriter(writer);
-
-                bw.write(html.toString());
-
-            } catch (IOException e) {
-                System.err.format("IOException: %s%n", e);
+            // Write to file
+            BufferedWriter writer = null;
+            try {
+                writer = new BufferedWriter(new FileWriter("player_map_" + (player + 1) + ".html"));
+                writer.write(html.toString());
+                writer.close();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
-
-
     }
 }
 
