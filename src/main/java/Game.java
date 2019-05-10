@@ -1,18 +1,19 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class Game {
     private int turns;
     private Player[] players;
-    private List<boolean[][]> playersVisited;
     private Map map;
     private Scanner sc;
     private int playerNo;
     private int mapSize;
+    private boolean teamMode = false;
+    private int teamNo = 0;
+    private Subject subject;
+    ArrayList<Observer> teamObservers = new ArrayList<Observer>();
+    Random random = new Random();
 
     public enum MapType {
         SAFE, HAZARDOUS
@@ -41,13 +42,21 @@ public class Game {
             // Get map type
             type = askMapType();
 
+            // Get map type
+            if(playerNo > 2) {
+                teamMode = askTeamMode();
+            }
+
+            if(teamMode) {
+                teamNo = askteamNo();
+            }
+
             // Generate map
             map = getMap(type, mapSize);
             map.generateMap();
 
             // Create new players
             players = new Player[playerNo];
-            playersVisited = new ArrayList<boolean[][]>();
             for(int i = 0; i < players.length; i++) {
 
                 // Get a position that is a grass tile
@@ -56,16 +65,33 @@ public class Game {
                     pos = Position.RandomPosition(mapSize);
                 }
 
-                players[i] = new Player(pos);
+                players[i] = new Player(pos, mapSize);
 
-                boolean[][] visited = new boolean[mapSize][mapSize];
-                visited[pos.x][pos.y] = true;
-                playersVisited.add(visited);
+                players[i].setVisible(pos, true);
 
+                if(teamMode){
+                    int teamNum = random.nextInt(teamNo);
+                    System.out.println("Player "+ (i + 1) + " is in team " + (teamNum + 1));
+                    players[i].setTeamID(teamNum);
+                }
+            }
+
+            // Set observers if in team mode
+            if(teamMode) {
+                setObservers();
+            }
+
+            // Set visible for team member's initial positions
+            if(teamMode){
+                for(int i = 0; i < players.length; i++) {
+                    Position pos = players[i].getPosition();
+                    subject.setTeamId(players[i].getTeamID());
+                    subject.setVisible(pos, true);
+                }
             }
 
             // Print map
-            // System.out.println(map);
+             System.out.println(map);
 
             boolean winners = false;
             while(!winners) {
@@ -78,7 +104,12 @@ public class Game {
                 for(int i = 0; i < playerNo; i++) {
                     // Set new position as visited
                     Position pos = players[i].getPosition();
-                    playersVisited.get(i)[pos.x][pos.y] = true;
+                    players[i].setVisible(pos, true);
+
+                    if(teamMode) {
+                        subject.setTeamId(players[i].getTeamID());
+                        subject.setVisible(pos, true);
+                    }
 
                     // Check if there are any players in water or any winners
                     Map.Tile tile = checkPlayerPositions(i);
@@ -98,7 +129,12 @@ public class Game {
                 Map.Tile tile = checkPlayerPositions(i);
                 generateHTMLFiles();
                 if (tile == Map.Tile.TREASURE) {
-                    System.out.println("Player " + (i + 1) + " won!");
+                    System.out.print("Player " + (i + 1));
+                    if(teamMode) {
+                        System.out.print("(team " + (players[i].getTeamID() + 1) + ")");
+                    }
+
+                    System.out.println(" won!");
                 }
             }
 
@@ -124,6 +160,62 @@ public class Game {
             }
 
             System.out.println("Enter a valid map type");
+        }
+    }
+
+    private boolean askTeamMode() {
+        while(true) {
+            System.out.println("Do you want to play in team mode? [Y]es / [N]o");
+            if(sc.hasNext()) {
+                String t = sc.next();
+                char letter = Character.toLowerCase(t.charAt(0));
+
+                if(letter == 'y') {
+                    return true;
+                } else if(letter == 'n') {
+                    return false;
+                }
+            }
+
+            System.out.println("Enter [y]es or [n]");
+        }
+    }
+
+
+    private int askteamNo() {
+        int size = -1;
+
+        while(true) {
+            System.out.println("Number of teams: ");
+            if(sc.hasNextInt()) {
+                size = sc.nextInt();
+
+                if(size > 1 && size < playerNo) {
+                    return size;
+                }
+            } else {
+                // Not an integer
+                sc.next();
+            }
+
+            System.err.println("Error: Enter a correct number of teams [2, " + (playerNo - 1) + "]");
+        }
+    }
+
+
+    public void setObservers(){
+
+        subject = new Subject();
+
+        for(int i = 0; i < teamNo;i++){
+            List<Player> teamMembers = new ArrayList<Player>();
+            for(int j = 0; j < playerNo; j++){
+                if(players[j].getTeamID() == i){
+                    teamMembers.add(players[j]);
+                }
+            }
+
+            teamObservers.add(new PlayerObserver(subject, teamMembers));
         }
     }
 
@@ -245,7 +337,7 @@ public class Game {
             if(sc.hasNextInt()) {
                 size = sc.nextInt();
 
-                if(playerNo <=4) {
+                if(playerNo <= 4) {
                     // playerNo = [2, 4]
                     if(size >= 5 && size <= 50) {
                         return size;
@@ -263,7 +355,13 @@ public class Game {
                 sc.next();
             }
 
-            System.out.println("Enter a valid map number");
+
+            System.out.print("Enter a valid map size");
+            if(playerNo <= 4) {
+                System.out.println(" [5, 50]");
+            } else {
+                System.out.println(" [8, 50]");
+            }
         }
 
     }
@@ -328,14 +426,19 @@ public class Game {
             // Header
             html.append(header);
 
-            html.append("<h1>Player " + (player + 1) + "</h1>");// + " position: " + players[player].getPosition().x + ", " + players[player].getPosition().y);
+            String team = "";
+            if(teamMode) {
+                team = " (Team " + (players[player].getTeamID() + 1) + ")";
+            }
+
+            html.append("<h1>Player " + (player + 1) + team + "</h1>");// + " position: " + players[player].getPosition().x + ", " + players[player].getPosition().y);
 
             html.append("<table>\n");
 
             for (int j = mapSize - 1; j >= 0; j--) {
                 html.append("<tr>\n");
                 for (int i = 0; i < mapSize; i++) {
-                    if (playersVisited.get(player)[i][j]) {
+                    if (players[player].isVisible(i, j)) {
 //                        System.out.print(i + "," + j + " " + map.getTileType(i, j));
                         html.append("\t<td class=\"" + map.getTileType(i, j) + "\" align=\"center\">");
                         if (players[player].getPosition().x == i && players[player].getPosition().y == j) {
