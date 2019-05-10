@@ -14,6 +14,12 @@ public class Game {
     private int playerNo;
     private int mapSize;
 
+    public enum MapType {
+        SAFE, HAZARDOUS
+    }
+
+    private MapType type;
+
     Game() {
     }
 
@@ -32,8 +38,11 @@ public class Game {
             // Get size of map
             mapSize = askMapSize();
 
+            // Get map type
+            type = askMapType();
+
             // Generate map
-            map = new Map(mapSize);
+            map = getMap(type, mapSize);
             map.generateMap();
 
             // Create new players
@@ -99,6 +108,41 @@ public class Game {
         }
     }
 
+
+    private MapType askMapType() {
+        while(true) {
+            System.out.println("Map type: [S]afe, [H]azardous:");
+            if(sc.hasNext()) {
+                String t = sc.next();
+                char letter = Character.toLowerCase(t.charAt(0));
+
+                if(letter == 's') {
+                    return MapType.SAFE;
+                } else if(letter == 'h') {
+                    return MapType.HAZARDOUS;
+                }
+            }
+
+            System.out.println("Enter a valid map type");
+        }
+    }
+
+    private Map getMap(MapType type, int size) {
+        Map map;
+        switch (type) {
+            case SAFE:
+                map = new SafeMap(size);
+                break;
+            case HAZARDOUS:
+                map = new HazardousMap(size);
+                break;
+            default:
+                map = new Map(size);
+                break;
+        }
+
+        return map;
+    }
 
     private void askAllPlayers() {
         System.out.println("Enter direction: [U]p, [D]own, [R]ight, [L]eft");

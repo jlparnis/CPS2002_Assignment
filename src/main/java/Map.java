@@ -11,6 +11,8 @@ public class Map {
     private int size;
     private Tile[][] map;
 
+    public double WaterTilesPercent = 0.3;
+
     public Map(){
 
     }
@@ -33,7 +35,7 @@ public class Map {
     private Tile getRandomTile() {
         // 30% Water
         // 70% Grass
-        if(Math.random() < 0.3) {
+        if(Math.random() < WaterTilesPercent) {
             return Tile.WATER;
         } else {
             return Tile.GRASS;
