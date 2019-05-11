@@ -1,12 +1,22 @@
 public class SafeMap extends Map {
     private static final double WATERTILESPERCENT = 0.1;
 
-    public SafeMap() {
+    private static SafeMap instance = null;
+
+    public static SafeMap getInstance(){
+        if(instance == null){
+            instance = new SafeMap();
+        }
+
+        return instance;
+    }
+
+    private SafeMap() {
         super();
         this.WaterTilesPercent = WATERTILESPERCENT;
     }
 
-    public SafeMap(int n) {
+    private SafeMap(int n) {
         super(n);
         this.WaterTilesPercent = WATERTILESPERCENT;
     }

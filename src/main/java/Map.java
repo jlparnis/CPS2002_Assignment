@@ -13,11 +13,22 @@ public class Map {
 
     public double WaterTilesPercent = 0.3;
 
-    public Map(){
+    private static Map instance = null;
+
+    public static Map getInstance(){
+        if(instance == null){
+            instance = new Map();
+        }
+
+        return instance;
+    }
+
+
+    private Map(){
 
     }
 
-    public Map(int n){
+    private Map(int n){
         this.size = n;
         map = new Tile[size][size];
     }
