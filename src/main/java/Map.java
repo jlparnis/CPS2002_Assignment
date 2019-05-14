@@ -24,11 +24,11 @@ public class Map {
     }
 
 
-    private Map(){
+    public Map(){
 
     }
 
-    private Map(int n){
+    public Map(int n){
         this.size = n;
         map = new Tile[size][size];
     }

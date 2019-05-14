@@ -221,17 +221,10 @@ public class Game {
 
     private Map getMap(MapType type, int size) {
         Map map;
-        switch (type) {
-            case SAFE:
-                map = new SafeMap(size);
-                break;
-            case HAZARDOUS:
-                map = new HazardousMap(size);
-                break;
-            default:
-                map = new Map(size);
-                break;
-        }
+
+        MapCreator creator = new MapCreator();
+
+        map = creator.create(type, size);
 
         return map;
     }

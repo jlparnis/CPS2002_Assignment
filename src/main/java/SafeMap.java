@@ -11,13 +11,16 @@ public class SafeMap extends Map {
         return instance;
     }
 
-    private SafeMap() {
-        super();
-        this.WaterTilesPercent = WATERTILESPERCENT;
+    public static SafeMap getInstance(int n){
+        if(instance == null){
+            instance = new SafeMap();
+        }
+        instance.setMapSize(n);
+
+        return instance;
     }
 
-    private SafeMap(int n) {
-        super(n);
+    private SafeMap() {
         this.WaterTilesPercent = WATERTILESPERCENT;
     }
 }

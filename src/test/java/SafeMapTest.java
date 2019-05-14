@@ -8,7 +8,7 @@ public class SafeMapTest {
 
     @Before
     public void setup() {
-        map = new SafeMap();
+        map = SafeMap.getInstance();
     }
 
     @After
@@ -19,7 +19,7 @@ public class SafeMapTest {
     @Test
     public void test_map_size() {
         int n = 10;
-        map = new SafeMap(n);
+        map = SafeMap.getInstance(n);
         Assert.assertEquals(n, map.getMapSize());
     }
 

@@ -9,7 +9,7 @@ public class HazardousMapTest {
 
     @Before
     public void setup() {
-        map = new HazardousMap();
+        map = HazardousMap.getInstance();
     }
 
     @After
@@ -20,7 +20,7 @@ public class HazardousMapTest {
     @Test
     public void test_map_size() {
         int n = 10;
-        map = new HazardousMap(n);
+        map = HazardousMap.getInstance(n);
         Assert.assertEquals(n, map.getMapSize());
     }
 

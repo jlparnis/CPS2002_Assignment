@@ -11,13 +11,17 @@ public class HazardousMap extends Map {
         return instance;
     }
 
-    private HazardousMap() {
-        super();
-        this.WaterTilesPercent = WATERTILESPERCENT;
+    public static HazardousMap getInstance(int n){
+        if(instance == null){
+            instance = new HazardousMap();
+        }
+
+        instance.setMapSize(n);
+
+        return instance;
     }
 
-    private HazardousMap(int n) {
-        super(n);
+    private HazardousMap() {
         this.WaterTilesPercent = WATERTILESPERCENT;
     }
 }
