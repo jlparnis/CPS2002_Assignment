@@ -91,7 +91,7 @@ public class Game {
             }
 
             // Print map
-             System.out.println(map);
+            // System.out.println(map);
 
             boolean winners = false;
             while(!winners) {
