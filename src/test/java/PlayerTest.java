@@ -6,10 +6,13 @@ import org.junit.Test;
 public class PlayerTest {
 
     private Player player;
+    private int mapSize;
 
     @Before
     public void setup() {
-        player = new Player(new Position(1,1));
+        mapSize = 5;
+
+        player = new Player(new Position(1,1), mapSize);
     }
 
     @After
@@ -20,7 +23,7 @@ public class PlayerTest {
     @Test
     public void test_player() {
         Position pos = new Position(3, 5);
-        player = new Player(pos);
+        player = new Player(pos, mapSize);
 
         Assert.assertEquals(pos.x, player.getPosition().x);
         Assert.assertEquals(pos.y, player.getPosition().y);
@@ -30,7 +33,7 @@ public class PlayerTest {
     public void test_move_up() {
         int x = 3, y = 4;
         Position pos = new Position(x, y);
-        player = new Player(pos);
+        player = new Player(pos, mapSize);
 
         player.move(Player.Move.UP);
         Assert.assertEquals(pos.x, player.getPosition().x);
@@ -44,7 +47,7 @@ public class PlayerTest {
     public void test_move_down() {
         int x = 3, y = 4;
         Position pos = new Position(x, y);
-        player = new Player(pos);
+        player = new Player(pos, mapSize);
 
         player.move(Player.Move.DOWN);
         Assert.assertEquals(pos.x, player.getPosition().x);
@@ -58,7 +61,7 @@ public class PlayerTest {
     public void test_move_left() {
         int x = 3, y = 4;
         Position pos = new Position(x, y);
-        player = new Player(pos);
+        player = new Player(pos, mapSize);
 
         player.move(Player.Move.LEFT);
         Assert.assertEquals(pos.x, player.getPosition().x);
@@ -72,7 +75,7 @@ public class PlayerTest {
     public void test_move_right() {
         int x = 3, y = 4;
         Position pos = new Position(x, y);
-        player = new Player(pos);
+        player = new Player(pos, mapSize);
 
         player.move(Player.Move.RIGHT);
         Assert.assertEquals(pos.x, player.getPosition().x);
@@ -87,7 +90,7 @@ public class PlayerTest {
         int x = 4, y = 5;
         Position pos = new Position(x, y);
 
-        player = new Player(pos);
+        player = new Player(pos, mapSize);
         player.move(Player.Move.UP);
         player.move(Player.Move.LEFT);
         player.resetStartingPos();
